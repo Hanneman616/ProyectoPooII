@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
 public class VentanaPrincipal extends javax.swing.JFrame {
     PanelFacturacion panelcaja;
     PanelAgregarProductos panelAgregarProductos;
+    CalculadoraF calculadora;
 
     /**
      * Creates new form VentanaPrincipal
@@ -25,6 +26,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         panelcaja = new PanelFacturacion();
         panelAgregarProductos = new PanelAgregarProductos();
+        calculadora = new CalculadoraF();
 
         
         
@@ -78,6 +80,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Herramientas");
 
         jMenuItem2.setText("Calculadora");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -99,43 +106,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCajaActionPerformed
+        calculadora.setVisible(false);
+        panelAgregarProductos.setVisible(false);
         panelcaja.setVisible(true);
                 this.setLayout(new BorderLayout());
                 this.add(panelcaja, BorderLayout.CENTER);
                 this.pack();
                 this.setVisible(true);
-        
-       
-       
-        
-        revalidate();
-        repaint();
+                revalidate();
+                repaint();
         
         
         
     }//GEN-LAST:event_menuCajaActionPerformed
 
     private void menuAgregarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarProductosActionPerformed
-       
+        calculadora.setVisible(false);
+        panelcaja.setVisible(false);
         panelAgregarProductos.setVisible(true);
                 this.setLayout(new BorderLayout());
                 this.add(panelAgregarProductos, BorderLayout.CENTER);
                 this.pack();
-                this.setVisible(true);
-        
-       
-       
-        
-        revalidate();
-        repaint();
-        
-        
-        
-        
-        
-        
-        
+                this.setVisible(true);  
+                revalidate();
+                repaint();
+   
     }//GEN-LAST:event_menuAgregarProductosActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        calculadora.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

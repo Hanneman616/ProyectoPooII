@@ -21,10 +21,12 @@ public class CalculadoraF extends javax.swing.JFrame {
     
     public CalculadoraF() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public void MostrarNumero(String numero){
         txtOp.setText(txtOp.getText()+numero);
+        
     }
     
 
@@ -62,8 +64,6 @@ public class CalculadoraF extends javax.swing.JFrame {
         btnPunto = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

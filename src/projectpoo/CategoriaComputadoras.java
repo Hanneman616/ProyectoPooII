@@ -227,7 +227,7 @@ public class CategoriaComputadoras extends javax.swing.JPanel {
         precioFinal=((Computador)tiendaElectrodomesticos).calcularPrecio();
         tiendaElectrodomesticos.setPrecioFinal(precioFinal);
         
-        
+        TiendaElectrodomesticos.tiendaArray.add(tiendaElectrodomesticos);
         
         System.out.println(tiendaElectrodomesticos.toString());
         

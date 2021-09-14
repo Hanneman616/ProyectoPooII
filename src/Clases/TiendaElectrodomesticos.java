@@ -13,7 +13,7 @@ public class TiendaElectrodomesticos {
     protected String modelo;
     protected final double iva=1.12;
     
-    ArrayList<TiendaElectrodomesticos> tiendaArray= new ArrayList<>();
+    public static ArrayList<TiendaElectrodomesticos> tiendaArray= new ArrayList<>();
 
     public TiendaElectrodomesticos(String Producto, int Cantidad,  double precioExtras, String modelo) {
         this.Producto = Producto;

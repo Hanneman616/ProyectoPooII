@@ -5,7 +5,9 @@
  */
 package projectpoo;
 
+import Clases.TiendaElectrodomesticos;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +17,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     PanelFacturacion panelcaja;
     PanelAgregarProductos panelAgregarProductos;
     CalculadoraF calculadora;
+    
+    
 
     /**
      * Creates new form VentanaPrincipal

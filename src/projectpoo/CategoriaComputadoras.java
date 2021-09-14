@@ -5,11 +5,19 @@
  */
 package projectpoo;
 
+import Clases.Computador;
+import Clases.TiendaElectrodomesticos;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Juanpaa
  */
 public class CategoriaComputadoras extends javax.swing.JPanel {
+    
+    TiendaElectrodomesticos tiendaElectrodomesticos;
+
 
     /**
      * Creates new form CategoriaComputadoras
@@ -27,45 +35,67 @@ public class CategoriaComputadoras extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        cbMarca = new javax.swing.JComboBox<>();
+        cbTipo = new javax.swing.JComboBox<>();
+        rbEstuche = new javax.swing.JRadioButton();
+        rbCooler = new javax.swing.JRadioButton();
+        rbMouse = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        rbHeadSets = new javax.swing.JRadioButton();
+        rbWebcam = new javax.swing.JRadioButton();
+        rbParlantes = new javax.swing.JRadioButton();
+        btnGuardar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cbCantidad = new javax.swing.JComboBox<>();
 
-        jComboBox1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lenovo", "Asus", "Hp", "Dell" }));
-        jComboBox1.setEnabled(false);
+        cbMarca.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lenovo", "Asus", "Hp", "Dell" }));
+        cbMarca.setEnabled(false);
+        cbMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMarcaActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laptop", "Escritorio", " " }));
+        cbTipo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laptop", "Escritorio", " " }));
+        cbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoActionPerformed(evt);
+            }
+        });
 
-        jRadioButton1.setText("Estuche");
-        jRadioButton1.setEnabled(false);
+        rbEstuche.setText("Estuche");
+        rbEstuche.setEnabled(false);
 
-        jRadioButton2.setText("Cooler");
-        jRadioButton2.setEnabled(false);
+        rbCooler.setText("Cooler");
+        rbCooler.setEnabled(false);
 
-        jRadioButton3.setText("Mouse");
-        jRadioButton3.setEnabled(false);
+        rbMouse.setText("Mouse");
+        rbMouse.setEnabled(false);
 
         jLabel1.setText("Extras:");
 
-        jRadioButton4.setText("HeadSets");
-        jRadioButton4.setEnabled(false);
+        rbHeadSets.setText("HeadSets");
+        rbHeadSets.setEnabled(false);
 
-        jRadioButton5.setText("Webcam");
-        jRadioButton5.setEnabled(false);
+        rbWebcam.setText("Webcam");
+        rbWebcam.setEnabled(false);
 
-        jRadioButton6.setText("Parlantes");
-        jRadioButton6.setEnabled(false);
+        rbParlantes.setText("Parlantes");
+        rbParlantes.setEnabled(false);
 
-        jButton1.setText("Guardar");
+        btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Cantidad:");
+
+        cbCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,67 +107,150 @@ public class CategoriaComputadoras extends javax.swing.JPanel {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rbEstuche)
                                 .addGap(45, 45, 45))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton3)
-                                    .addComponent(jRadioButton2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(rbMouse)
+                                    .addComponent(rbCooler))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton5)
-                            .addComponent(jRadioButton4)
-                            .addComponent(jRadioButton6))))
-                .addContainerGap(281, Short.MAX_VALUE))
+                            .addComponent(rbWebcam)
+                            .addComponent(rbHeadSets)
+                            .addComponent(rbParlantes))))
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnGuardar)
                 .addGap(215, 215, 215))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton5))
+                    .addComponent(rbCooler)
+                    .addComponent(rbWebcam)
+                    .addComponent(jLabel2)
+                    .addComponent(cbCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton6))
+                    .addComponent(rbEstuche)
+                    .addComponent(rbParlantes))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(rbMouse)
+                    .addComponent(rbHeadSets))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnGuardar)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
+        
+        cbMarca.setEnabled(true);
+        
+        
+        
+    }//GEN-LAST:event_cbTipoActionPerformed
+
+    private void cbMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMarcaActionPerformed
+        
+        rbCooler.setEnabled(true);
+        rbEstuche.setEnabled(true);
+        rbMouse.setEnabled(true);
+        rbWebcam.setEnabled(true);
+        rbParlantes.setEnabled(true);
+        rbHeadSets.setEnabled(true);
+        
+        btnGuardar.setEnabled(true);
+        
+    }//GEN-LAST:event_cbMarcaActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        String tipo="";
+        String marca="";
+        double precioFinal=0;
+        double extras=0;
+        int cantidad=0;
+        //Guardo la cantidad del combo box
+        cantidad=Integer.parseInt((String)cbCantidad.getSelectedItem());
+
+        //Calculo el precio de los extras.
+        if(rbCooler.isSelected()){
+            extras+=60;
+        }
+        if(rbEstuche.isSelected()){
+            extras+=50;
+        }
+        if(rbMouse.isSelected()){
+            extras+=29;
+        }
+        if(rbWebcam.isSelected()){
+            extras+=25;
+        }
+        if(rbParlantes.isSelected()){
+            extras+=33;
+        }
+        if(rbHeadSets.isSelected()){
+            extras+=48;
+        }
+        
+
+        tipo=(String)cbTipo.getSelectedItem();
+        marca=(String)cbMarca.getSelectedItem();
+        
+        //Creacion del Objeto
+        tiendaElectrodomesticos= new Computador(((String)cbTipo.getSelectedItem()),
+                "Computadora",cantidad,extras,((String)cbMarca.getSelectedItem()) );
+        
+        //Calculo el precio final usando el metodo de la clase Computador y le mando
+        //a la clase padre
+        precioFinal=((Computador)tiendaElectrodomesticos).calcularPrecio();
+        tiendaElectrodomesticos.setPrecioFinal(precioFinal);
+        
+        
+        
+        System.out.println(tiendaElectrodomesticos.toString());
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox<String> cbCantidad;
+    private javax.swing.JComboBox<String> cbMarca;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton rbCooler;
+    private javax.swing.JRadioButton rbEstuche;
+    private javax.swing.JRadioButton rbHeadSets;
+    private javax.swing.JRadioButton rbMouse;
+    private javax.swing.JRadioButton rbParlantes;
+    private javax.swing.JRadioButton rbWebcam;
     // End of variables declaration//GEN-END:variables
 }

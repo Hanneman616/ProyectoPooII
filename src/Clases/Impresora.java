@@ -8,8 +8,8 @@ public class Impresora extends TiendaElectrodomesticos {
     String tipoTinta="";
     
 
-    public Impresora(String Productos, int Cantidad, double Precio, double precioExtras, String modelo, String tipoTinta) {
-        super(Productos, Cantidad, Precio, precioExtras, modelo);
+    public Impresora(String Productos, int Cantidad, double precioExtras, String modelo, String tipoTinta) {
+        super(Productos, Cantidad, precioExtras, modelo);
         this.tipoTinta=tipoTinta;
 
     }

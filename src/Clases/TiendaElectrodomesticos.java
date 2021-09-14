@@ -1,26 +1,38 @@
 
 package Clases;
 
+import java.util.ArrayList;
+
 
 public class TiendaElectrodomesticos {
     
-    protected String Productos;
+    protected String Producto;
     protected int Cantidad;
-    protected double Precio;
+    protected double PrecioFinal;
     protected double precioExtras;
     protected String modelo;
-    protected final double iva=0.12;
+    protected final double iva=1.12;
+    
+    ArrayList<TiendaElectrodomesticos> tiendaArray= new ArrayList<>();
 
-    public TiendaElectrodomesticos(String Productos, int Cantidad, double Precio, double precioExtras, String modelo) {
-        this.Productos = Productos;
+    public TiendaElectrodomesticos(String Producto, int Cantidad,  double precioExtras, String modelo) {
+        this.Producto = Producto;
         this.Cantidad = Cantidad;
-        this.Precio = Precio;
         this.precioExtras = precioExtras;
         this.modelo = modelo;
     }
+
+  
+
+    public void setPrecioFinal(double PrecioFinal) {
+        this.PrecioFinal = PrecioFinal;
+    }
     
     
-    
+    @Override
+    public String toString(){
+        return Producto + Cantidad + PrecioFinal + precioExtras + modelo;
+    }
     
     
     

@@ -1,0 +1,14 @@
+Fecha de Emision: 2021-09-19T00:42:08.913311500
+Codigo de Factura: TK79R
+            TU TIENDA TECNOLOGICA S.A 
+Nombre del Cliente: asda
+Cedula: 1723418776
+Telefono: 1234567890
+Direccion: asdasd
+Correo Electronico: jua@asd.com
+Productos: 
+Television 1   739.2  0.0  LG
+
+
+Iva: 12% 
+Total a Pagar: 739.2

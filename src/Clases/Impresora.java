@@ -6,6 +6,9 @@ package Clases;
 public class Impresora extends TiendaElectrodomesticos {
     
     String tipoTinta="";
+    double precio = 0;
+    double precioTinta = 0;
+    double precioFinal = 0;
     
 
     public Impresora(String Productos, int Cantidad, double precioExtras, String modelo, String tipoTinta) {
@@ -14,12 +17,8 @@ public class Impresora extends TiendaElectrodomesticos {
 
     }
 
-  
-    
     public double calcularPrecio(){
-        double precio=0;
-        double precioTinta=0;
-        
+          
         if(modelo.equals("Hp")){
             precio=200;
         }
@@ -39,8 +38,7 @@ public class Impresora extends TiendaElectrodomesticos {
         precioFinal =(precio + precioExtras) * iva * Cantidad;
         
         return 0;
-        
-        
+               
     }
     
     

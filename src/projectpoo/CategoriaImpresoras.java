@@ -19,7 +19,7 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
      * Creates new form CategoriaImpresoras
      */
     public CategoriaImpresoras() {
-        initComponents(); 
+        initComponents();
     }
 
     /**
@@ -140,6 +140,7 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         double precioExtras=0;
+        double precioFinal = 0;
         int Cantidad = (int) cmbCantidad.getSelectedItem();
         String TipoFuncionamiento = (String) cmbTipoFuncionamiento.getSelectedItem();
         String Marca = (String) cmbMarcas.getSelectedItem();
@@ -151,7 +152,11 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
             precioExtras+=23.25;
         }
         
-        tiendaElectrodomesticos = new Impresora("Impresora" ,Cantidad, precioExtras, Marca, TipoFuncionamiento );
+        tiendaElectrodomesticos = new Impresora("Impresora" ,Cantidad, precioExtras, Marca, TipoFuncionamiento);
+        precioFinal =((Impresora)tiendaElectrodomesticos).calcularPrecio();
+        tiendaElectrodomesticos.setPrecioFinal(precioFinal);
+        
+        TiendaElectrodomesticos.tiendaArray.add(tiendaElectrodomesticos);
         
         
         

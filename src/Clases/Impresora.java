@@ -1,11 +1,14 @@
 
 package Clases;
 
+import java.text.DecimalFormat;
+
 
 
 public class Impresora extends TiendaElectrodomesticos {
     
-    String tipoTinta="";
+String tipoTinta="";
+    
 
 
     public Impresora(String Productos, int Cantidad, double precioExtras, String modelo, String tipoTinta) {
@@ -15,11 +18,10 @@ public class Impresora extends TiendaElectrodomesticos {
     }
 
     public double calcularPrecio(){
-          
         double precio = 0;
         double precioTinta = 0;
         double precioFinal = 0;
-    
+        
         if(modelo.equals("Hp")){
             precio=200;
         }
@@ -29,19 +31,20 @@ public class Impresora extends TiendaElectrodomesticos {
         if(modelo.equals("Epson")){
             precio=225;
         }
- 
-        if(tipoTinta.equals("TintaRecargable")){
+
+        if(tipoTinta.equals("Tinta Recargable")){
             precioTinta=40;
         }else{
             precioTinta=65;
         }
-        
-        precioFinal =(precio + precioExtras) * iva * Cantidad;
-        
+
+        precioFinal =(precio + precioExtras+precioTinta) * iva * Cantidad;
+        DecimalFormat df = new DecimalFormat("#.00");
+        precioFinal=((double)Math.round(precioFinal * 100d) / 100d);
+
         return precioFinal;
-               
+
     }
-    
     
     
     

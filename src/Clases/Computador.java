@@ -21,6 +21,7 @@ public class Computador extends TiendaElectrodomesticos{
         double precio=0;
         double precioFinal=0;
         
+        
         if(tipo.equals("Laptop")){
             precio=500;
             if(modelo.equals("Lenovo")){

@@ -13,7 +13,7 @@ public class TiendaElectrodomesticos {
     protected String modelo;
     protected final double iva=1.12;
     
-    public static ArrayList<TiendaElectrodomesticos> tiendaArray= new ArrayList<>();
+    
 
     public TiendaElectrodomesticos(String Producto, int Cantidad,  double precioExtras, String modelo) {
         this.Producto = Producto;
@@ -22,16 +22,45 @@ public class TiendaElectrodomesticos {
         this.modelo = modelo;
     }
 
+    public String getProducto() {
+        return Producto;
+    }
+
+    public int getCantidad() {
+        return Cantidad;
+    }
+
+    public double getPrecioFinal() {
+        return PrecioFinal;
+    }
+
+    public double getPrecioExtras() {
+        return precioExtras;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public double getIva() {
+        return iva;
+    }
+
+    
+    
+    
+    
   
 
     public void setPrecioFinal(double PrecioFinal) {
         this.PrecioFinal = PrecioFinal;
+        
     }
     
     
     @Override
     public String toString(){
-        return Producto + Cantidad + PrecioFinal + precioExtras + modelo;
+        return Producto +" " + Cantidad  + "   "+ PrecioFinal + "  "+   precioExtras +  "  "+ modelo;
     }
     
     

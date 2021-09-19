@@ -1,14 +1,14 @@
-Fecha de Emision: 10:55:10 19/09/2021
-Codigo de Factura: LL2RL
+Fecha de Emision: 11:07:56 20/09/2021
+Codigo de Factura: W4RJP
             TU TIENDA TECNOLOGICA S.A 
-Nombre del Cliente: Juan
+Nombre del Cliente: Enruique
 Cedula: 1723418776
 Telefono: 1234567890
-Direccion: acas
-Correo Electronico: ju@e.com
+Direccion: Conocoto
+Correo Electronico: en@asd.com
 Productos: 
-Impresora 1   268.8  0.0  Hp
+Television 1   739.2  0.0  LG
 
 
 Iva: 12% 
-Total a Pagar: 268.8
+Total a Pagar: 739.2

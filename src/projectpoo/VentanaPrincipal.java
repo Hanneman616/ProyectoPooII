@@ -28,8 +28,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     CalculadoraF calculadora;
     InformeVentas informe;
     
-    
-
     /**
      * Creates new form VentanaPrincipal
      */
@@ -56,6 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFacturacion = new javax.swing.JMenu();
         menuAgregarProductos = new javax.swing.JMenuItem();
@@ -67,11 +66,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setText("NewbieSoftware");
+        jLabel1.setEnabled(false);
+
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
 
         menuFacturacion.setText("Archivo");
 
+        menuAgregarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/carrito.png"))); // NOI18N
         menuAgregarProductos.setText("Agregar Productos");
         menuAgregarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +83,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuFacturacion.add(menuAgregarProductos);
 
+        menuCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/factura.png"))); // NOI18N
         menuCaja.setText("Facturacion");
         menuCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +92,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         menuFacturacion.add(menuCaja);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Salir.png"))); // NOI18N
         jMenuItem1.setText("Salir");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Herramientas");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/calculadora.png"))); // NOI18N
         jMenuItem2.setText("Calculadora");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +114,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        txtInformeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ventas.png"))); // NOI18N
         txtInformeVentas.setText("Informe de ventas");
         txtInformeVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,11 +131,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(838, 838, 838)
+                .addComponent(jLabel1)
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(501, 501, 501)
+                .addComponent(jLabel1))
         );
 
         pack();
@@ -191,8 +203,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             pw.println(t.getNombreCliente()+ "       "+ t.getTelefono()+"       "+t.getCorreo()+"       "+
               t.getFechaCompra()+"       "+t.getProductosComprados()+"       "+t.getTotalGastado());   
         }
-       
-        
+            
         fichero.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null,"Error","",3);
@@ -253,6 +264,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

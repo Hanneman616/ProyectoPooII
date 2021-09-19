@@ -19,7 +19,7 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
      * Creates new form CategoriaImpresoras
      */
     public CategoriaImpresoras() {
-        initComponents();
+        initComponents(); 
     }
 
     /**

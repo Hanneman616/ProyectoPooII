@@ -36,7 +36,8 @@ public class Impresora extends TiendaElectrodomesticos {
             precioTinta=65;
         }
         
-
+        precioFinal =(precio + precioExtras) * iva * Cantidad;
+        
         return 0;
         
         

@@ -6,7 +6,16 @@
 package projectpoo;
 
 
+import Clases.Informe;
+import Clases.TiendaElectrodomesticos;
 import java.awt.BorderLayout;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -17,6 +26,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     PanelFacturacion panelcaja;
     PanelAgregarProductos panelAgregarProductos;
     CalculadoraF calculadora;
+    InformeVentas informe;
     
     
 
@@ -31,6 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelcaja = new PanelFacturacion();
         panelAgregarProductos = new PanelAgregarProductos();
         calculadora = new CalculadoraF();
+        informe= new InformeVentas();
 
         
         
@@ -52,6 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        txtInformeVentas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +89,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuFacturacion.add(menuCaja);
 
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         menuFacturacion.add(jMenuItem1);
 
         jMenuBar1.add(menuFacturacion);
@@ -90,6 +107,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem2);
+
+        txtInformeVentas.setText("Informe de ventas");
+        txtInformeVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInformeVentasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(txtInformeVentas);
 
         jMenuBar1.add(jMenu2);
 
@@ -112,6 +137,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void menuCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCajaActionPerformed
         calculadora.setVisible(false);
         panelAgregarProductos.setVisible(false);
+        informe.setVisible(false);
         panelcaja.setVisible(true);
                 this.setLayout(new BorderLayout());
                 this.add(panelcaja, BorderLayout.CENTER);
@@ -127,6 +153,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void menuAgregarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgregarProductosActionPerformed
         calculadora.setVisible(false);
         panelcaja.setVisible(false);
+        informe.setVisible(false);
         panelAgregarProductos.setVisible(true);
                 this.setLayout(new BorderLayout());
                 this.add(panelAgregarProductos, BorderLayout.CENTER);
@@ -140,6 +167,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         calculadora.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        String informe="";
+        String fechaCompra="";
+        String nombreArchivo="";
+        
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        nombreArchivo+=dateFormat.format(date)+".txt";
+        fechaCompra+=dateFormat.format(date);
+        
+        
+        FileWriter fichero = null;	
+	PrintWriter pw=null;
+        try {
+            fichero=new FileWriter("InformeVentas\\"+nombreArchivo);
+            pw=new PrintWriter(fichero);
+            
+            pw.println(fechaCompra);
+            
+            for(Informe t: Informe.informe){
+            pw.println(t.getNombreCliente()+ "       "+ t.getTelefono()+"       "+t.getCorreo()+"       "+
+              t.getFechaCompra()+"       "+t.getProductosComprados()+"       "+t.getTotalGastado());   
+        }
+       
+        
+        fichero.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"Error","",3);
+        }
+        
+        Informe.informe.clear();
+        
+        
+        System.exit(0);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void txtInformeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInformeVentasActionPerformed
+        panelcaja.setVisible(false);
+        panelAgregarProductos.setVisible(false);
+        informe.setVisible(true);
+                this.setLayout(new BorderLayout());
+                this.add(informe, BorderLayout.CENTER);
+                this.pack();
+                this.setVisible(true);  
+                revalidate();
+                repaint();
+    }//GEN-LAST:event_txtInformeVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,5 +260,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAgregarProductos;
     private javax.swing.JMenuItem menuCaja;
     private javax.swing.JMenu menuFacturacion;
+    private javax.swing.JMenuItem txtInformeVentas;
     // End of variables declaration//GEN-END:variables
 }

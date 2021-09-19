@@ -5,13 +5,17 @@
  */
 package projectpoo;
 
+import Clases.Informe;
 import Clases.TiendaElectrodomesticos;
 import Clases.Validador;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,6 +32,8 @@ public class PanelFacturacion extends javax.swing.JPanel {
     boolean v1,v2,v3,v4;
     String codigoFactura;
     double totalPagar=0;
+    Informe informe;
+    
 
     /**
      * Creates new form PanelCaja
@@ -42,6 +48,7 @@ public class PanelFacturacion extends javax.swing.JPanel {
         dtmModelo.addColumn("Precio Final");
         tbl.setModel(dtmModelo);
         validar=new Validador();
+        
         
     }
     
@@ -116,6 +123,7 @@ public class PanelFacturacion extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
         btnFactura = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
 
         addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -197,20 +205,18 @@ public class PanelFacturacion extends javax.swing.JPanel {
             }
         });
 
+        btnNuevo.setText("Nuevo Cliente");
+        btnNuevo.setEnabled(false);
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFactura)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -242,6 +248,19 @@ public class PanelFacturacion extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(9, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFactura)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,25 +292,35 @@ public class PanelFacturacion extends javax.swing.JPanel {
                         .addComponent(jLabel9))
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnFactura)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFactura)
+                    .addComponent(btnNuevo))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         
+        String productos="";
+        
         String nombre=txtNombre.getText();
         String cedula=txtCedula.getText();
         String telefono=txtTelefono.getText();
         String direccion=txtDireccion.getText();
         String correo = txtCorreo.getText();
+        String fechaCompra="";
+        
+        
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        Date date = new Date();
+        fechaCompra+=hourdateFormat.format(date);
                 
         FileWriter fichero = null;	
 	PrintWriter pw=null;
         try {
             fichero=new FileWriter("Facturacion\\factura.txt");
             pw=new PrintWriter(fichero);
-            pw.println("Fecha de Emision: " + LocalDateTime.now());
+            pw.println("Fecha de Emision: " + fechaCompra);
         pw.println("Codigo de Factura: " + codigoFactura);
         pw.println("            TU TIENDA TECNOLOGICA S.A ");
         pw.println("Nombre del Cliente: " + nombre);
@@ -316,15 +345,21 @@ public class PanelFacturacion extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Error al imprimir factura","",3);
         }
         
+        btnNuevo.setEnabled(true);
+        
+        //////////////////////////
+        for(TiendaElectrodomesticos t: Array.tiendaArray){
+          productos+=t.getProducto() + ",";
+        }  
+        
+        informe= new Informe(nombre,telefono,correo,fechaCompra,productos,totalPagar);
+        
+        Informe.informe.add(informe);
         
         
         
-        
-        
-        
-        
-        
-        
+          
+          
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void formAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_formAncestorAdded
@@ -344,6 +379,7 @@ public class PanelFacturacion extends javax.swing.JPanel {
         txtTotal.setText(String.valueOf(totalPagar));
         
         
+       
     }//GEN-LAST:event_formAncestorAdded
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
@@ -412,9 +448,30 @@ public class PanelFacturacion extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtCorreoKeyReleased
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        dtmModelo.setRowCount(0);
+        txtCedula.setText("");
+        txtCorreo.setText("");
+        txtDireccion.setText("");
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        txtTotal.setText("");
+        
+        Array.tiendaArray.clear();
+
+        this.setVisible(false);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFactura;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

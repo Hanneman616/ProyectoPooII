@@ -1,13 +1,14 @@
-Fecha de Emision: 2021-09-19T00:34:00.267
-Codigo de Factura: KC2PV
+Fecha de Emision: 10:55:10 19/09/2021
+Codigo de Factura: LL2RL
             TU TIENDA TECNOLOGICA S.A 
-Nombre del Cliente: ASD
+Nombre del Cliente: Juan
 Cedula: 1723418776
 Telefono: 1234567890
-Direccion: ASDASD
-Correo Electronico: jua@asd.com
+Direccion: acas
+Correo Electronico: ju@e.com
 Productos: 
+Impresora 1   268.8  0.0  Hp
 
 
 Iva: 12% 
-Total a Pagar: 0.0
+Total a Pagar: 268.8

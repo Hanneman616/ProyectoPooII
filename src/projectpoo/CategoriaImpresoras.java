@@ -139,8 +139,8 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbMarcasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double precioExtras=0;
-       double precioFinal;
+        double precioExtras = 0;
+        double precioFinal = 0;
         int Cantidad = Integer.parseInt((String) cmbCantidad.getSelectedItem());
         String TipoFuncionamiento = (String) cmbTipoFuncionamiento.getSelectedItem();
         String Marca = (String) cmbMarcas.getSelectedItem();
@@ -158,9 +158,7 @@ public class CategoriaImpresoras extends javax.swing.JPanel {
         
         TiendaElectrodomesticos.tiendaArray.add(tiendaElectrodomesticos);
         
-        
-        
-        
+        System.out.println(precioFinal);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
